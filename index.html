@@ -1,11 +1,866 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <title>Hello yuhengwang</title> 
+  <meta charset="UTF-8">
+  <meta name="description"
+        content="Deformable Neural Radiance Fields creates free-viewpoint portraits (nerfies) from casually captured videos.">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormFactory: An Interactive Benchmarking Suite for Multimodal Form-Filling Agents</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
   </head>
   <body>
-    <h1>Hello, World!</h1>
-    <p>This is a helloworld page.</p> 
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">FormFactory: An Interactive Benchmarking Suite for Multimodal Form-Filling Agents</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">Bobo Li<sup>1</sup>,</span>
+            <span class="author-block">Yuheng Wang<sup>2</sup>,</span>
+            <span class="author-block">Hao Fei<sup>3</sup>,</span>
+            <span class="author-block">Juncheng Li<sup>4</sup>,</span>
+            <span class="author-block">Wei Ji<sup>1</sup>,</span>
+            <span class="author-block">Mong-Li Lee<sup>1</sup>,</span>
+            <span class="author-block">Wynne Hsu<sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>National University of Singapore,</span>
+            <span class="author-block"><sup>2</sup>Wuhan University,</span>
+            <span class="author-block"><sup>3</sup>Zhejiang University,</span>
+            <span class="author-block"><sup>4</sup>Nanjing University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2011.12948"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=MrKrnHhk8IA"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href="https://github.com/google/nerfies/releases/tag/0.1"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Online form filling is a common yet labor-intensive task involving extensive keyboard and mouse interactions. 
+Despite the long-standing vision of automating this process with "one click," existing tools remain largely rule-based and lack generalizable, generative capabilities.
+Recent advances in Multimodal Large Language Models (MLLMs) have enabled promising agents for GUI-related tasks in general-purpose scenarios.
+However, they struggle with the unique challenges of form filling, such as flexible layouts and the difficulty of aligning textual instructions with on-screen fields.
+To bridge this gap, we formally define the form-filling task and propose FormFactory—an interactive benchmarking suite comprising a web-based interface, backend evaluation module, and carefully constructed dataset. 
+Our benchmark covers diverse real-world scenarios, incorporates various field formats, and simulates high-fidelity form interactions.
+We conduct a comprehensive evaluation of state-of-the-art MLLMs and observe that no model surpasses 5% accuracy, underscoring the inherent difficulty of the task.
+These findings also reveal significant limitations in current models' visual layout reasoning and field-value alignment abilities.
+We hope our benchmark can serve as a stepping stone for further research into robust, practical form-filling agents. 
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+    <!-- Dataset Table -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Dataset Statistics</h2>
+        <div class="content" style="overflow-x: auto;">
+          <style>
+            .stats-table {
+              width: 100%;
+              border-collapse: collapse;
+              margin: 20px 0;
+              font-size: 0.9em;
+              box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+              border-radius: 8px;
+              overflow: hidden;
+            }
+            .stats-table th, .stats-table td {
+              padding: 12px;
+              border: 1px solid #f0f0f0;
+              text-align: center;
+              vertical-align: middle;
+            }
+            .stats-table th {
+              background-color: #f8f9fa;
+              color: #495057;
+              font-weight: 600;
+              text-transform: uppercase;
+              font-size: 0.85em;
+              letter-spacing: 0.5px;
+            }
+            .stats-table .category-cell {
+              background-color: #f1f3f5;
+              color: #495057;
+              font-weight: 700;
+              text-align: center;
+              vertical-align: middle;
+              padding: 15px;
+              font-size: 1.1em;
+              font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            }
+            .stats-table td {
+              background-color: white;
+              color: #495057;
+            }
+            .stats-table tr:nth-child(even) td:not(.category-cell) {
+              background-color: #fbfbfd;
+            }
+            .stats-table tr:hover td:not(.category-cell) {
+              background-color: #f8f9fa;
+            }
+            .table-container {
+              max-width: 100%;
+              overflow-x: auto;
+              border-radius: 8px;
+              margin: 20px 0;
+            }
+            .stats-table td:not(.category-cell) {
+              transition: background-color 0.3s ease;
+            }
+            .stats-table td:not(:empty):not(.category-cell):not(.numeric-cell) {
+              color: #2ecc71;
+              font-weight: bold;
+            }
+            .numeric-cell {
+              font-family: 'Monaco', monospace;
+              color: #6c757d;
+            }
+            /* 为不同类别的Form Type添加颜色 */
+            .form-type-academic {
+              color: #2ecc71 !important;  /* 柔和的绿色 */
+              font-weight: 500;
+            }
+            .form-type-business {
+              color: #e74c3c !important;  /* 柔和的红色 */
+              font-weight: 500;
+            }
+            .form-type-arts {
+              color: #9b59b6 !important;  /* 柔和的紫色 */
+              font-weight: 500;
+            }
+            .form-type-tech {
+              color: #3498db !important;  /* 柔和的蓝色 */
+              font-weight: 500;
+            }
+            .form-type-finance {
+              color: #f1c40f !important;  /* 柔和的黄色 */
+              font-weight: 500;
+            }
+            .form-type-healthcare {
+              color: #1abc9c !important;  /* 柔和的青色 */
+              font-weight: 500;
+            }
+            .form-type-legal {
+              color: #e67e22 !important;  /* 柔和的橙色 */
+              font-weight: 500;
+            }
+            .form-type-construction {
+              color: #34495e !important;  /* 柔和的深蓝色 */
+              font-weight: 500;
+            }
+            /* Category背景色 */
+            .category-academic {
+              background-color: rgba(46, 204, 113, 0.1) !important;
+              color: #27ae60 !important;
+            }
+            .category-business {
+              background-color: rgba(231, 76, 60, 0.1) !important;
+              color: #c0392b !important;
+            }
+            .category-arts {
+              background-color: rgba(155, 89, 182, 0.1) !important;
+              color: #8e44ad !important;
+            }
+            .category-tech {
+              background-color: rgba(52, 152, 219, 0.1) !important;
+              color: #2980b9 !important;
+            }
+            .category-finance {
+              background-color: rgba(241, 196, 15, 0.1) !important;
+              color: #d4ac0d !important;
+            }
+            .category-healthcare {
+              background-color: rgba(26, 188, 156, 0.1) !important;
+              color: #16a085 !important;
+            }
+            .category-legal {
+              background-color: rgba(230, 126, 34, 0.1) !important;
+              color: #d35400 !important;
+            }
+            .category-construction {
+              background-color: rgba(52, 73, 94, 0.1) !important;
+              color: #2c3e50 !important;
+            }
+          </style>
+          <div class="table-container">
+            <table class="stats-table">
+              <thead>
+                <tr>
+                  <th>Category</th>
+                  <th>Form Type</th>
+                  <th>Fields</th>
+                  <th>Samples</th>
+                  <th>Total Fields</th>
+                  <th>Field Types</th>
+                  <th>Text</th>
+                  <th>Long Text</th>
+                  <th>Number</th>
+                  <th>Date</th>
+                  <th>Selection</th>
+                  <th>Time</th>
+                  <th>File</th>
+                  <th>URL</th>
+                  <th>Required</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- Academic & Research -->
+                <tr>
+                  <td class="category-cell category-academic" rowspan="5">Academic & Research</td>
+                  <td class="form-type-academic">Job Application for University Positions</td>
+                  <td class="numeric-cell">4</td><td class="numeric-cell">50</td><td class="numeric-cell">200</td><td class="numeric-cell">2</td>
+                  <td></td><td></td><td></td><td>✓</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-academic">Grant or Research Funding Application</td>
+                  <td class="numeric-cell">6</td><td class="numeric-cell">50</td><td class="numeric-cell">300</td><td class="numeric-cell">5</td>
+                  <td>✓</td><td>✓</td><td></td><td></td><td>✓</td><td></td><td>✓</td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-academic">Paper Submission Form</td>
+                  <td class="numeric-cell">7</td><td class="numeric-cell">50</td><td class="numeric-cell">300</td><td class="numeric-cell">3</td>
+                  <td></td><td></td><td>✓</td><td></td><td>✓</td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-academic">Student Course Registration Form</td>
+                  <td class="numeric-cell">8</td><td class="numeric-cell">50</td><td class="numeric-cell">400</td><td class="numeric-cell">4</td>
+                  <td></td><td></td><td>✓</td><td>✓</td><td></td><td>✓</td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-academic">Scholarship Application for Students</td>
+                  <td class="numeric-cell">16</td><td class="numeric-cell">50</td><td class="numeric-cell">800</td><td class="numeric-cell">4</td>
+                  <td></td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td></td><td>✓</td>
+                </tr>
+                <!-- Professional & Business -->
+                <tr>
+                  <td class="category-cell category-business" rowspan="4">Professional & Business</td>
+                  <td class="form-type-business">Startup Funding Application</td>
+                  <td class="numeric-cell">18</td><td class="numeric-cell">50</td><td class="numeric-cell">900</td><td class="numeric-cell">6</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td>
+                </tr>
+                <tr>
+                  <td class="form-type-business">Real Estate Rental Application</td>
+                  <td class="numeric-cell">22</td><td class="numeric-cell">50</td><td class="numeric-cell">1,100</td><td class="numeric-cell">6</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td>
+                </tr>
+                <tr>
+                  <td class="form-type-business">Educational Workshop Registration</td>
+                  <td class="numeric-cell">17</td><td class="numeric-cell">50</td><td class="numeric-cell">850</td><td class="numeric-cell">4</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td></td><td></td><td></td><td></td><td>✓</td>
+                </tr>
+                <tr>
+                  <td class="form-type-business">Association Membership Application</td>
+                  <td class="numeric-cell">20</td><td class="numeric-cell">50</td><td class="numeric-cell">1,000</td><td class="numeric-cell">6</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td>✓</td><td></td><td>✓</td>
+                </tr>
+                <!-- Arts & Creative -->
+                <tr>
+                  <td class="category-cell category-arts" rowspan="3">Arts & Creative</td>
+                  <td class="form-type-arts">Art Exhibition Submission Form</td>
+                  <td class="numeric-cell">11</td><td class="numeric-cell">50</td><td class="numeric-cell">550</td><td class="numeric-cell">6</td>
+                  <td></td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td>
+                </tr>
+                <tr>
+                  <td class="form-type-arts">Literary Magazine Submission Form</td>
+                  <td class="numeric-cell">11</td><td class="numeric-cell">50</td><td class="numeric-cell">550</td><td class="numeric-cell">5</td>
+                  <td></td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td>✓</td><td></td><td>✓</td>
+                </tr>
+                <tr>
+                  <td class="form-type-arts">Conference Speaker Application Form</td>
+                  <td class="numeric-cell">14</td><td class="numeric-cell">50</td><td class="numeric-cell">700</td><td class="numeric-cell">6</td>
+                  <td></td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td></td><td>✓</td><td></td><td>✓</td>
+                </tr>
+                <!-- Technology & Software -->
+                <tr>
+                  <td class="category-cell category-tech" rowspan="2">Technology & Software</td>
+                  <td class="form-type-tech">Bug Reporting Form</td>
+                  <td class="numeric-cell">10</td><td class="numeric-cell">50</td><td class="numeric-cell">500</td><td class="numeric-cell">4</td>
+                  <td></td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td></td><td>✓</td>
+                </tr>
+                <tr>
+                  <td class="form-type-tech">IT Support Request Form</td>
+                  <td class="numeric-cell">11</td><td class="numeric-cell">50</td><td class="numeric-cell">550</td><td class="numeric-cell">5</td>
+                  <td></td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td>
+                </tr>
+                <!-- Finance & Banking -->
+                <tr>
+                  <td class="category-cell category-finance" rowspan="3">Finance & Banking</td>
+                  <td class="form-type-finance">Personal Loan Application Form</td>
+                  <td class="numeric-cell">7</td><td class="numeric-cell">50</td><td class="numeric-cell">350</td><td class="numeric-cell">3</td>
+                  <td></td><td></td><td>✓</td><td></td><td></td><td></td><td></td><td>✓</td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-finance">Bank Account Opening Form</td>
+                  <td class="numeric-cell">5</td><td class="numeric-cell">50</td><td class="numeric-cell">250</td><td class="numeric-cell">3</td>
+                  <td>✓</td><td></td><td>✓</td><td></td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-finance">Financial Planning Consultation Form</td>
+                  <td class="numeric-cell">6</td><td class="numeric-cell">50</td><td class="numeric-cell">300</td><td class="numeric-cell">4</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td></td><td></td><td></td><td></td><td></td>
+                </tr>
+                <!-- Healthcare & Medical -->
+                <tr>
+                  <td class="category-cell category-healthcare" rowspan="3">Healthcare & Medical</td>
+                  <td class="form-type-healthcare">Patient Consent for Surgery</td>
+                  <td class="numeric-cell">8</td><td class="numeric-cell">50</td><td class="numeric-cell">400</td><td class="numeric-cell">3</td>
+                  <td>✓</td><td></td><td></td><td></td><td></td><td></td><td>✓</td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-healthcare">Medical Research Study Enrollment</td>
+                  <td class="numeric-cell">8</td><td class="numeric-cell">50</td><td class="numeric-cell">400</td><td class="numeric-cell">4</td>
+                  <td></td><td></td><td>✓</td><td>✓</td><td></td><td></td><td></td><td>✓</td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-healthcare">Health Insurance Claim Form</td>
+                  <td class="numeric-cell">10</td><td class="numeric-cell">50</td><td class="numeric-cell">400</td><td class="numeric-cell">5</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td></td><td>✓</td>
+                </tr>
+                <!-- Legal & Compliance -->
+                <tr>
+                  <td class="category-cell category-legal" rowspan="3">Legal & Compliance</td>
+                  <td class="form-type-legal">NDA Submission Form</td>
+                  <td class="numeric-cell">9</td><td class="numeric-cell">50</td><td class="numeric-cell">450</td><td class="numeric-cell">6</td>
+                  <td>✓</td><td>✓</td><td></td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-legal">Background Check Auth. Form</td>
+                  <td class="numeric-cell">11</td><td class="numeric-cell">50</td><td class="numeric-cell">550</td><td class="numeric-cell">4</td>
+                  <td>✓</td><td></td><td></td><td>✓</td><td></td><td></td><td>✓</td><td></td><td></td>
+                </tr>
+                <tr>
+                  <td class="form-type-legal">Contractor Onboarding Form</td>
+                  <td class="numeric-cell">14</td><td class="numeric-cell">50</td><td class="numeric-cell">700</td><td class="numeric-cell">6</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td>✓</td><td></td><td>✓</td>
+                </tr>
+                <!-- Construction & Manufacturing -->
+                <tr>
+                  <td class="category-cell category-construction" rowspan="2">Construction & Manufacturing</td>
+                  <td class="form-type-construction">Project Bid Submission Form</td>
+                  <td class="numeric-cell">13</td><td class="numeric-cell">50</td><td class="numeric-cell">650</td><td class="numeric-cell">5</td>
+                  <td>✓</td><td></td><td></td><td>✓</td><td>✓</td><td></td><td></td><td>✓</td><td>✓</td>
+                </tr>
+                <tr>
+                  <td class="form-type-construction">Manufacturing Order Form</td>
+                  <td class="numeric-cell">13</td><td class="numeric-cell">50</td><td class="numeric-cell">650</td><td class="numeric-cell">5</td>
+                  <td>✓</td><td></td><td>✓</td><td>✓</td><td>✓</td><td></td><td></td><td></td><td>✓</td>
+                </tr>
+                <!-- Overall -->
+                <tr>
+                  <td class="category-cell" colspan="2">Overall</td>
+                  <td class="numeric-cell">279</td><td class="numeric-cell">1,250</td><td class="numeric-cell">13,800</td><td class="numeric-cell">9</td>
+                  <td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 分隔部分 -->
+
+    <!-- 模型评估结果部分 -->
+    <section class="section" style="padding-top: 0;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <h2 class="title is-3 has-text-centered" style="margin-bottom: 2rem;">Model Performance Evaluation</h2>
+            <div class="content has-text-justified">
+              <p style="margin-bottom: 2rem;">
+                We evaluate the performance of various multimodal language models on form-filling tasks across different field types. 
+                The evaluation metrics include both atomic-level accuracy (Click and Value) and episodic-level completion success.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- 原有的模型评估表格内容 -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <style>
+              .model-table {
+                width: 100%;
+                border-collapse: separate;
+                border-spacing: 0;
+                margin: 20px 0;
+                font-size: 0.9em;
+                box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+                border-radius: 12px;
+                overflow: hidden;
+                background: white;
+              }
+              .model-table th, .model-table td {
+                padding: 16px 12px;
+                text-align: center;
+                border-bottom: 1px solid #eef2f7;
+                font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+              }
+              .model-table th {
+                background-color: #f8fafc;
+                color: #475569;
+                font-weight: 600;
+                font-size: 0.85em;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+                border-bottom: 2px solid #e2e8f0;
+              }
+              .model-table tr:nth-child(even) {
+                background-color: #fafbff;
+              }
+              .model-table tr:hover {
+                background-color: #f8fafc;
+                transition: background-color 0.2s ease;
+              }
+              .model-table .model-name {
+                text-align: left;
+                font-weight: 600;
+                color: #334155;
+                padding-left: 20px;
+                padding-right: 20px;
+                width: 220px;
+                white-space: nowrap;
+              }
+              .model-table .group-header {
+                background-color: #f1f5f9;
+              }
+              .model-table .group-header th {
+                padding: 14px 12px;
+                font-weight: 700;
+                color: #334155;
+                font-size: 0.9em;
+              }
+              .metric-header {
+                font-size: 0.8em;
+                color: #64748b;
+                font-weight: 500;
+              }
+              .model-table td:not(.model-name) {
+                font-family: 'Monaco', monospace;
+                color: #475569;
+                width: 60px;
+              }
+              .table-caption {
+                color: #475569;
+                font-size: 0.95em;
+                line-height: 1.6;
+                margin: 1.5rem auto;
+                max-width: 95%;
+                padding: 0 1rem;
+                text-align: left;
+              }
+              .table-container {
+                margin: 2rem 0;
+                padding: 0 1rem;
+              }
+            </style>
+            <div class="table-container">
+              <table class="model-table">
+                <thead>
+                  <tr class="group-header">
+                    <th rowspan="2" style="border-right: 1px solid #e2e8f0;">Model</th>
+                    <th colspan="2">String</th>
+                    <th colspan="2">Drop-down List</th>
+                    <th colspan="2">Checkbox</th>
+                    <th colspan="2">Radio Button</th>
+                    <th colspan="2">Description</th>
+                    <th colspan="2">Date</th>
+                    <th colspan="2">Check</th>
+                    <th colspan="2">Episodic</th>
+                  </tr>
+                  <tr>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                    <th class="metric-header">Click</th>
+                    <th class="metric-header">Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="model-name">GPT 4o</td>
+                    <td>2.2</td><td>17.5</td>
+                    <td>0.0</td><td>30.7</td>
+                    <td>0.0</td><td>31.3</td>
+                    <td>0.0</td><td>10.0</td>
+                    <td>8.8</td><td>0.84</td>
+                    <td>0.0</td><td>2.8</td>
+                    <td>0.0</td><td>9.8</td>
+                    <td>0.9</td><td>11.3</td>
+                  </tr>
+                  <tr>
+                    <td class="model-name">Gemini 2.5 Pro</td>
+                    <td>0.9</td><td>98.7</td>
+                    <td>0.0</td><td>99.0</td>
+                    <td>0.0</td><td>76.1</td>
+                    <td>0.0</td><td>52.6</td>
+                    <td>8.1</td><td>0.72</td>
+                    <td>0.0</td><td>99.7</td>
+                    <td>0.0</td><td>79.8</td>
+                    <td>0.4</td><td>70.7</td>
+                  </tr>
+                  <tr>
+                    <td class="model-name">Claude 3.7 Sonnet</td>
+                    <td>0.0</td><td>95.2</td>
+                    <td>0.0</td><td>66.2</td>
+                    <td>0.0</td><td>72.0</td>
+                    <td>0.0</td><td>97.9</td>
+                    <td>0.0</td><td>0.70</td>
+                    <td>0.0</td><td>99.1</td>
+                    <td>0.0</td><td>55.7</td>
+                    <td>0.0</td><td>58.0</td>
+                  </tr>
+                  <tr>
+                    <td class="model-name">Qwen-VL-Max</td>
+                    <td>4.6</td><td>97.1</td>
+                    <td>1.7</td><td>98.9</td>
+                    <td>0.0</td><td>91.8</td>
+                    <td>0.0</td><td>99.0</td>
+                    <td>11.1</td><td>0.74</td>
+                    <td>0.0</td><td>98.6</td>
+                    <td>0.0</td><td>71.4</td>
+                    <td>1.1</td><td>72.7</td>
+                  </tr>
+                  <tr>
+                    <td class="model-name">Grok 3</td>
+                    <td>0.0</td><td>96.2</td>
+                    <td>0.0</td><td>91.2</td>
+                    <td>0.0</td><td>92.4</td>
+                    <td>0.0</td><td>98.1</td>
+                    <td>5.9</td><td>0.71</td>
+                    <td>0.0</td><td>97.9</td>
+                    <td>0.0</td><td>75.5</td>
+                    <td>0.0</td><td>70.7</td>
+                  </tr>
+                  <tr>
+                    <td class="model-name">Doubao-vision-pro-32k</td>
+                    <td>0.0</td><td>94.2</td>
+                    <td>0.0</td><td>89.7</td>
+                    <td>0.0</td><td>38.6</td>
+                    <td>0.0</td><td>96.9</td>
+                    <td>0.0</td><td>0.51</td>
+                    <td>0.0</td><td>92.1</td>
+                    <td>0.0</td><td>69.9</td>
+                    <td>0.0</td><td>64.7</td>
+                  </tr>
+                </tbody>
+              </table>
+              <p class="table-caption">
+                <strong>Note:</strong> Atomic-level and episodic-level evaluation of MLLMs across different field types using Click and Value metrics. 
+                GPT-4o often refuses execution despite strong capabilities, resulting in lower atomic scores. 
+                The relatively high Click accuracy on Description fields stems from their large input area, which tolerates less precise clicks. 
+                Episodic results measure end-to-end form completion accuracy.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Paper video. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <div class="columns is-centered">
+
+      <!-- Visual Effects. -->
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-3">Visual Effects</h2>
+          <p>
+            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
+            would be impossible without nerfies since it would require going through a wall.
+          </p>
+          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/dollyzoom-stacked.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <!--/ Visual Effects. -->
+
+      <!-- Matting. -->
+      <div class="column">
+        <h2 class="title is-3">Matting</h2>
+        <div class="columns is-centered">
+          <div class="column content">
+            <p>
+              As a byproduct of our method, we can also solve the matting problem by ignoring
+              samples that fall outside of a bounding box during rendering.
+            </p>
+            <video id="matting-video" controls playsinline height="100%">
+              <source src="./static/videos/matting.mp4"
+                      type="video/mp4">
+            </video>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!--/ Matting. -->
+
+    <!-- Animation. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Animation</h2>
+
+        <!-- Interpolating. -->
+        <h3 class="title is-4">Interpolating states</h3>
+        <div class="content has-text-justified">
+          <p>
+            We can also animate the scene by interpolating the deformation latent codes of two input
+            frames. Use the slider here to linearly interpolate between the left frame and the right
+            frame.
+          </p>
+        </div>
+        <div class="columns is-vcentered interpolation-panel">
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_start.jpg"
+                 class="interpolation-image"
+                 alt="Interpolate start reference image."/>
+            <p>Start Frame</p>
+          </div>
+          <div class="column interpolation-video-column">
+            <div id="interpolation-image-wrapper">
+              Loading...
+            </div>
+            <input class="slider is-fullwidth is-large is-info"
+                   id="interpolation-slider"
+                   step="1" min="0" max="100" value="0" type="range">
+          </div>
+          <div class="column is-3 has-text-centered">
+            <img src="./static/images/interpolate_end.jpg"
+                 class="interpolation-image"
+                 alt="Interpolation end reference image."/>
+            <p class="is-bold">End Frame</p>
+          </div>
+        </div>
+        <br/>
+        <!--/ Interpolating. -->
+
+        <!-- Re-rendering. -->
+        <h3 class="title is-4">Re-rendering the input video</h3>
+        <div class="content has-text-justified">
+          <p>
+            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
+            viewpoint such as a stabilized camera by playing back the training deformations.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="replay-video"
+                 controls
+                 muted
+                 preload
+                 playsinline
+                 width="75%">
+            <source src="./static/videos/replay.mp4"
+                    type="video/mp4">
+          </video>
+        </div>
+        <!--/ Re-rendering. -->
+
+      </div>
+    </div>
+    <!--/ Animation. -->
+
+
+    <!-- Concurrent Work. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+
+        <div class="content has-text-justified">
+          <p>
+            There's a lot of excellent work that was introduced around the same time as ours.
+          </p>
+          <p>
+            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
+          </p>
+          <p>
+            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
+            both use deformation fields to model non-rigid scenes.
+          </p>
+          <p>
+            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
+          </p>
+          <p>
+            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Concurrent Work. -->
+
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="./static/videos/nerfies_paper.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</main>
   </body>
 </html>
