@@ -454,6 +454,14 @@ We hope our benchmark can serve as a stepping stone for further research into ro
         </div>
       </div>
     </div>
+    <div class="content has-text-centered">
+      <p class="table-caption" style="text-align: center; font-style: italic; margin-top: 1rem;">
+        Table 1: Form field statistics across domains. 
+        "Pair Count" refers to the total number of field-value pairs. 
+        Abbreviations: Bin. Chc. = Binary Choice, Text Desp. = Text Description, Multi Chc. = Multiple Choice, Ckx. Input = Checkbox Input, Num. Input = Numeric Input. 
+        <span style="color: #2ecc71;">✓</span> indicates the presence of a field type.
+      </p>
+    </div>
 
     <!-- 分隔部分 -->
 
@@ -652,138 +660,40 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                   </tr>
                 </tbody>
               </table>
-              <p class="table-caption">
-                <strong>Note:</strong> Atomic-level and episodic-level evaluation of MLLMs across different field types using Click and Value metrics. 
-                GPT-4o often refuses execution despite strong capabilities, resulting in lower atomic scores. 
-                The relatively high Click accuracy on Description fields stems from their large input area, which tolerates less precise clicks. 
-                Episodic results measure end-to-end form completion accuracy.
-              </p>
             </div>
+            <p class="table-caption" style="text-align: center; font-style: italic; margin-top: 1rem;">
+              Table 2: Atomic-level and episodic-level evaluation of MLLMs across different field types using Clk. and Val. metrics. GPT-4o often refuses execution despite strong capabilities, resulting in lower atomic scores. The relatively high Clk. accuracy on Description fields stems from their large input area, which tolerates less precise clicks. Episodic results measure end-to-end form completion accuracy.
+            </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-four-fifths">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src="https://www.youtube.com/embed/MrKrnHhk8IA?rel=0&amp;showinfo=0"
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-  </div>
-</section>
-
-
-<section class="section">
-  <div class="container is-max-desktop">
-
+    <!-- Example Forms -->
     <div class="columns is-centered">
-
-      <!-- Visual Effects. -->
-      <div class="column">
-        <div class="content">
-          <h2 class="title is-3">Visual Effects</h2>
-          <p>
-            Using <i>nerfies</i> you can create fun visual effects. This Dolly zoom effect
-            would be impossible without nerfies since it would require going through a wall.
-          </p>
-          <video id="dollyzoom" autoplay controls muted loop playsinline height="100%">
-            <source src="./static/videos/dollyzoom-stacked.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-      </div>
-      <!--/ Visual Effects. -->
-
-      <!-- Matting. -->
-      <div class="column">
-        <h2 class="title is-3">Matting</h2>
-        <div class="columns is-centered">
-          <div class="column content">
-            <p>
-              As a byproduct of our method, we can also solve the matting problem by ignoring
-              samples that fall outside of a bounding box during rendering.
-            </p>
-            <video id="matting-video" controls playsinline height="100%">
-              <source src="./static/videos/matting.mp4"
-                      type="video/mp4">
-            </video>
-          </div>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Matting. -->
-
-    <!-- Animation. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Animation</h2>
-
-        <!-- Interpolating. -->
-        <h3 class="title is-4">Interpolating states</h3>
+      <div class="column is-full">
         <div class="content has-text-justified">
-          <p>
-            We can also animate the scene by interpolating the deformation latent codes of two input
-            frames. Use the slider here to linearly interpolate between the left frame and the right
-            frame.
-          </p>
-        </div>
-        <div class="columns is-vcentered interpolation-panel">
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_start.jpg"
-                 class="interpolation-image"
-                 alt="Interpolate start reference image."/>
-            <p>Start Frame</p>
-          </div>
-          <div class="column interpolation-video-column">
-            <div id="interpolation-image-wrapper">
-              Loading...
+          <div class="columns is-centered" style="margin-top: 3rem;">
+            <div class="column">
+              <figure class="image">
+                <img src="images/7_page_1.png" alt="Form Example 1">
+                <figcaption class="has-text-centered" style="margin-top: 1rem;">
+                  Figure 1: Example of a complex form with multiple field types
+                </figcaption>
+              </figure>
             </div>
-            <input class="slider is-fullwidth is-large is-info"
-                   id="interpolation-slider"
-                   step="1" min="0" max="100" value="0" type="range">
+            <div class="column">
+              <figure class="image">
+                <img src="images/8_page_1.png" alt="Form Example 2">
+                <figcaption class="has-text-centered" style="margin-top: 1rem;">
+                  Figure 2: Another form example showing different input field layouts
+                </figcaption>
+              </figure>
+            </div>
           </div>
-          <div class="column is-3 has-text-centered">
-            <img src="./static/images/interpolate_end.jpg"
-                 class="interpolation-image"
-                 alt="Interpolation end reference image."/>
-            <p class="is-bold">End Frame</p>
-          </div>
         </div>
-        <br/>
-        <!--/ Interpolating. -->
-
-        <!-- Re-rendering. -->
-        <h3 class="title is-4">Re-rendering the input video</h3>
-        <div class="content has-text-justified">
-          <p>
-            Using <span class="dnerf">Nerfies</span>, you can re-render a video from a novel
-            viewpoint such as a stabilized camera by playing back the training deformations.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <video id="replay-video"
-                 controls
-                 muted
-                 preload
-                 playsinline
-                 width="75%">
-            <source src="./static/videos/replay.mp4"
-                    type="video/mp4">
-          </video>
-        </div>
-        <!--/ Re-rendering. -->
-
       </div>
     </div>
-    <!--/ Animation. -->
-
 
     <!-- Concurrent Work. -->
     <div class="columns is-centered">
@@ -819,11 +729,14 @@ We hope our benchmark can serve as a stepping stone for further research into ro
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{park2021nerfies,
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+    <pre><code>@misc{li2025formfactoryinteractivebenchmarkingsuite,
+      title={FormFactory: An Interactive Benchmarking Suite for Multimodal Form-Filling Agents}, 
+      author={Bobo Li and Yuheng Wang and Hao Fei and Juncheng Li and Wei Ji and Mong-Li Lee and Wynne Hsu},
+      year={2025},
+      eprint={2506.01520},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2506.01520}, 
 }</code></pre>
   </div>
 </section>
