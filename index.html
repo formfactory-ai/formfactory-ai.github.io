@@ -146,6 +146,26 @@ We hope our benchmark can serve as a stepping stone for further research into ro
     </div>
     <!--/ Abstract. -->
 
+    <!-- Overview -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Overview</h2>
+        <div class="content has-text-justified">
+          <p>
+            FormFactory provides a comprehensive benchmarking suite for evaluating form-filling agents across diverse scenarios. 
+            Our framework integrates various form types and field formats while maintaining high-fidelity interaction simulation.
+            The figure below illustrates the key components and workflow of our system.
+          </p>
+          <figure class="image" style="margin: 2rem auto;">
+            <img src="images/fig1v1_page_1.png" alt="FormFactory Overview" style="max-width: 95%; margin: 0 auto;">
+            <figcaption class="has-text-centered" style="margin-top: 1rem; color: #4a4a4a; font-size: 0.95em;">
+              Figure 1: Overview of the FormFactory framework, showing the interaction between different components and the evaluation process.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
     <!-- Dataset Table -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full">
@@ -673,22 +693,80 @@ We hope our benchmark can serve as a stepping stone for further research into ro
     <div class="columns is-centered">
       <div class="column is-full">
         <div class="content has-text-justified">
-          <div class="columns is-centered" style="margin-top: 3rem;">
-            <div class="column">
-              <figure class="image">
-                <img src="images/7_page_1.png" alt="Form Example 1">
-                <figcaption class="has-text-centered" style="margin-top: 1rem;">
-                  Figure 1: Example of a complex form with multiple field types
-                </figcaption>
-              </figure>
+          <style>
+            .form-image-container .column {
+              padding: 0.5rem;  /* 减小列间距 */
+            }
+            .form-image-container .columns {
+              margin-top: 1.5rem !important;  /* 减小行间距 */
+            }
+            .form-image-container .image img {
+              max-width: 90%;  /* 图片宽度稍微缩小 */
+              margin: 0 auto;  /* 居中显示 */
+              display: block;
+            }
+            .form-image-container figcaption {
+              margin-top: 0.5rem !important;  /* 减小说明文字的上边距 */
+              font-size: 0.9em;  /* 稍微减小说明文字大小 */
+            }
+          </style>
+          <div class="form-image-container">
+            <!-- First Row -->
+            <div class="columns is-centered">
+              <div class="column">
+                <figure class="image">
+                  <img src="images/7_page_1.png" alt="Form Example 1">
+                  <figcaption class="has-text-centered">
+                    Figure 1: Example of a complex form with multiple field types
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column">
+                <figure class="image">
+                  <img src="images/8_page_1.png" alt="Form Example 2">
+                  <figcaption class="has-text-centered">
+                    Figure 2: Another form example showing different input field layouts
+                  </figcaption>
+                </figure>
+              </div>
             </div>
-            <div class="column">
-              <figure class="image">
-                <img src="images/8_page_1.png" alt="Form Example 2">
-                <figcaption class="has-text-centered" style="margin-top: 1rem;">
-                  Figure 2: Another form example showing different input field layouts
-                </figcaption>
-              </figure>
+            <!-- Second Row -->
+            <div class="columns is-centered">
+              <div class="column">
+                <figure class="image">
+                  <img src="images/3_page_1.png" alt="Form Example 3">
+                  <figcaption class="has-text-centered">
+                    Figure 3: Form with specialized input requirements
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column">
+                <figure class="image">
+                  <img src="images/4_page_1.png" alt="Form Example 4">
+                  <figcaption class="has-text-centered">
+                    Figure 4: Form demonstrating various field validations
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+            <!-- Third Row -->
+            <div class="columns is-centered">
+              <div class="column">
+                <figure class="image">
+                  <img src="images/5_page_1.png" alt="Form Example 5">
+                  <figcaption class="has-text-centered">
+                    Figure 5: Complex form with nested sections
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column">
+                <figure class="image">
+                  <img src="images/6_page_1.png" alt="Form Example 6">
+                  <figcaption class="has-text-centered">
+                    Figure 6: Form with advanced interaction elements
+                  </figcaption>
+                </figure>
+              </div>
             </div>
           </div>
         </div>
