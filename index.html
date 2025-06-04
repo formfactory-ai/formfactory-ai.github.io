@@ -534,7 +534,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full">
-            <h2 class="title is-3 has-text-centered" style="margin-bottom: 2rem;">Model Performance Evaluation</h2>
+            <h2 class="title is-3 has-text-centered" style="margin-bottom: 2rem;">Model Performance</h2>
             <div class="content has-text-justified">
               <p style="margin-bottom: 1rem;">
                 We evaluate several state-of-the-art MLLMs (e.g., GPT-4o, Gemini 2.5 Pro, Claude Sonnet 3.7) via their public APIs without task-specific fine-tuning, using an automated browser interface implemented with PyAutoGUI on a Windows platform. This setup enables fair assessment of the models' inherent capabilities in visual grounding, spatial reasoning, and field-value alignment. The evaluation includes both Atomic tasks (single field types) and Episodic tasks (end-to-end form filling), measuring fine-grained interaction and multi-step reasoning performance. We report two metrics: Click (UI interaction accuracy) and Value (field content accuracy), with BLEU used for generative Description fields.
@@ -727,94 +727,98 @@ We hope our benchmark can serve as a stepping stone for further research into ro
             <p class="table-caption" style="text-align: center; font-style: italic; margin-top: 1rem;">
               Table 2: Atomic-level and episodic-level evaluation of MLLMs across different field types using Clk. and Val. metrics. GPT-4o often refuses execution despite strong capabilities, resulting in lower atomic scores. The relatively high Clk. accuracy on Description fields stems from their large input area, which tolerates less precise clicks. Episodic results measure end-to-end form completion accuracy.
             </p>
+            <div class="content has-text-justified">
+              <p style="margin-bottom: 1rem;">
+                Existing MLLMs still struggle to complete form-filling tasks reliably. Improving spatial reasoning and field alignment remains critical for enabling practical, GUI-driven agents in office automation scenarios.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Example Forms -->
+        <div class="columns is-centered">
+          <div class="column is-full">
+            <div class="content has-text-justified">
+              <style>
+                .form-image-container .column {
+                  padding: 0.5rem;  /* 减小列间距 */
+                }
+                .form-image-container .columns {
+                  margin-top: 1.5rem !important;  /* 减小行间距 */
+                }
+                .form-image-container .image img {
+                  max-width: 90%;  /* 图片宽度稍微缩小 */
+                  margin: 0 auto;  /* 居中显示 */
+                  display: block;
+                }
+                .form-image-container figcaption {
+                  margin-top: 0.5rem !important;  /* 减小说明文字的上边距 */
+                  font-size: 0.9em;  /* 稍微减小说明文字大小 */
+                }
+              </style>
+              <div class="form-image-container">
+                <!-- First Row -->
+                <div class="columns is-centered">
+                  <div class="column">
+                    <figure class="image">
+                      <img src="images/3_page_1.png" alt="Form Example 3">
+                      <figcaption class="has-text-centered">
+                        Figure 3: Form with specialized input requirements
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="column">
+                    <figure class="image">
+                      <img src="images/4_page_1.png" alt="Form Example 4">
+                      <figcaption class="has-text-centered">
+                        Figure 4: Form demonstrating various field validations
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <!-- Third Row -->
+                <div class="columns is-centered">
+                  <div class="column">
+                    <figure class="image">
+                      <img src="images/5_page_1.png" alt="Form Example 5">
+                      <figcaption class="has-text-centered">
+                        Figure 5: Complex form with nested sections
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="column">
+                    <figure class="image">
+                      <img src="images/6_page_1.png" alt="Form Example 6">
+                      <figcaption class="has-text-centered">
+                        Figure 6: Form with advanced interaction elements
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+                <div class="columns is-centered">
+                  <div class="column">
+                    <figure class="image">
+                      <img src="images/7_page_1.png" alt="Form Example 1">
+                      <figcaption class="has-text-centered">
+                        Figure 1: Example of a complex form with multiple field types
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="column">
+                    <figure class="image">
+                      <img src="images/8_page_1.png" alt="Form Example 2">
+                      <figcaption class="has-text-centered">
+                        Figure 2: Another form example showing different input field layouts
+                      </figcaption>
+                    </figure>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </section>
-
-    <!-- Example Forms -->
-    <div class="columns is-centered">
-      <div class="column is-full">
-        <div class="content has-text-justified">
-          <style>
-            .form-image-container .column {
-              padding: 0.5rem;  /* 减小列间距 */
-            }
-            .form-image-container .columns {
-              margin-top: 1.5rem !important;  /* 减小行间距 */
-            }
-            .form-image-container .image img {
-              max-width: 90%;  /* 图片宽度稍微缩小 */
-              margin: 0 auto;  /* 居中显示 */
-              display: block;
-            }
-            .form-image-container figcaption {
-              margin-top: 0.5rem !important;  /* 减小说明文字的上边距 */
-              font-size: 0.9em;  /* 稍微减小说明文字大小 */
-            }
-          </style>
-          <div class="form-image-container">
-            <!-- First Row -->
-            <!-- Second Row -->
-            <div class="columns is-centered">
-              <div class="column">
-                <figure class="image">
-                  <img src="images/3_page_1.png" alt="Form Example 3">
-                  <figcaption class="has-text-centered">
-                    Figure 3: Form with specialized input requirements
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="column">
-                <figure class="image">
-                  <img src="images/4_page_1.png" alt="Form Example 4">
-                  <figcaption class="has-text-centered">
-                    Figure 4: Form demonstrating various field validations
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-            <!-- Third Row -->
-            <div class="columns is-centered">
-              <div class="column">
-                <figure class="image">
-                  <img src="images/5_page_1.png" alt="Form Example 5">
-                  <figcaption class="has-text-centered">
-                    Figure 5: Complex form with nested sections
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="column">
-                <figure class="image">
-                  <img src="images/6_page_1.png" alt="Form Example 6">
-                  <figcaption class="has-text-centered">
-                    Figure 6: Form with advanced interaction elements
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-            <div class="columns is-centered">
-              <div class="column">
-                <figure class="image">
-                  <img src="images/7_page_1.png" alt="Form Example 1">
-                  <figcaption class="has-text-centered">
-                    Figure 1: Example of a complex form with multiple field types
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="column">
-                <figure class="image">
-                  <img src="images/8_page_1.png" alt="Form Example 2">
-                  <figcaption class="has-text-centered">
-                    Figure 2: Another form example showing different input field layouts
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!--/ Concurrent Work. -->
 
