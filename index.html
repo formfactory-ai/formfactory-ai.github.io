@@ -182,7 +182,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
             Your browser does not support the video tag.
           </video>
           <p class="caption" style="margin-top: 1rem; color: #4a4a4a; font-size: 0.95em;">
-            Demo video showing the interactive form-filling process and evaluation platform in action.
+            Demo video of the interaction platform.
           </p>
         </div>
       </div>
@@ -510,20 +510,34 @@ We hope our benchmark can serve as a stepping stone for further research into ro
       </p>
     </div>
 
-
-
-    <!-- 分隔部分 -->
+    <!-- LLM-Driven Form Filling -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 4rem;">
+      <div class="column is-full">
+        <h2 class="title is-3">Lightweight MLLM-driven Framework</h2>
+        <div class="content has-text-justified" style="max-width: 95%; margin: 0 auto 1rem auto;">
+          <p>
+            To enable automated execution and evaluation of form-filling tasks, we develop a lightweight MLLM-driven framework, shown in Figure 3. The system has three main components: a web-based form frontend, a backend scorer, and an agent execution module. Given a form and an input document (e.g., a resume), the LLM generates a sequence of GUI actions—such as Click(x, y) and Type(text)—to fill the form. These actions are executed automatically using tools like PyAutoGUI.After submission, the backend scorer compares the filled entries with ground-truth annotations and produces a detailed evaluation report, including field accuracy, action match rate, and overall task score. This framework supports scalable and fine-grained analysis of model performance in realistic form-filling tasks.
+          </p>
+        </div>
+        <div class="content has-text-justified">
+          <figure class="image" style="margin: 2rem auto;">
+            <img src="images/systemoverview_page_1.png" alt="LLM-Driven Form Filling Overview" style="max-width: 95%; margin: 0 auto;">
+            <figcaption class="has-text-centered" style="margin-top: 1rem; color: #4a4a4a; font-size: 0.95em;">
+              Figure 2: Overview of the form-filling task system. The platform takes a form and a resume as input, prompting an MLLM to generate GUI actions (Click, Type) for form completion. Execution and scoring modules evaluate task performance.
+          </figure>
+        </div>
+      </div>
+    </div>
 
     <!-- Model Performance Evaluation -->
-    <section class="section" style="padding-top: 4rem;">
+    <section class="section" style="padding-top: 2rem;">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full">
             <h2 class="title is-3 has-text-centered" style="margin-bottom: 2rem;">Model Performance Evaluation</h2>
             <div class="content has-text-justified">
-              <p style="margin-bottom: 2rem;">
-                We evaluate the performance of various multimodal language models on form-filling tasks across different field types. 
-                The evaluation metrics include both atomic-level accuracy (Click and Value) and episodic-level completion success.
+              <p style="margin-bottom: 1rem;">
+                We evaluate several state-of-the-art MLLMs (e.g., GPT-4o, Gemini 2.5 Pro, Claude Sonnet 3.7) via their public APIs without task-specific fine-tuning, using an automated browser interface implemented with PyAutoGUI on a Windows platform. This setup enables fair assessment of the models' inherent capabilities in visual grounding, spatial reasoning, and field-value alignment. The evaluation includes both Atomic tasks (single field types) and Episodic tasks (end-to-end form filling), measuring fine-grained interaction and multi-step reasoning performance. We report two metrics: Click (UI interaction accuracy) and Value (field content accuracy), with BLEU used for generative Description fields.
               </p>
             </div>
           </div>
@@ -536,7 +550,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                 width: 100%;
                 border-collapse: separate;
                 border-spacing: 0;
-                margin: 20px 0;
+                margin: 10px 0;
                 font-size: 0.9em;
                 box-shadow: 0 4px 20px rgba(0,0,0,0.05);
                 border-radius: 12px;
@@ -741,24 +755,6 @@ We hope our benchmark can serve as a stepping stone for further research into ro
           </style>
           <div class="form-image-container">
             <!-- First Row -->
-            <div class="columns is-centered">
-              <div class="column">
-                <figure class="image">
-                  <img src="images/7_page_1.png" alt="Form Example 1">
-                  <figcaption class="has-text-centered">
-                    Figure 1: Example of a complex form with multiple field types
-                  </figcaption>
-                </figure>
-              </div>
-              <div class="column">
-                <figure class="image">
-                  <img src="images/8_page_1.png" alt="Form Example 2">
-                  <figcaption class="has-text-centered">
-                    Figure 2: Another form example showing different input field layouts
-                  </figcaption>
-                </figure>
-              </div>
-            </div>
             <!-- Second Row -->
             <div class="columns is-centered">
               <div class="column">
@@ -793,6 +789,24 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                   <img src="images/6_page_1.png" alt="Form Example 6">
                   <figcaption class="has-text-centered">
                     Figure 6: Form with advanced interaction elements
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+            <div class="columns is-centered">
+              <div class="column">
+                <figure class="image">
+                  <img src="images/7_page_1.png" alt="Form Example 1">
+                  <figcaption class="has-text-centered">
+                    Figure 1: Example of a complex form with multiple field types
+                  </figcaption>
+                </figure>
+              </div>
+              <div class="column">
+                <figure class="image">
+                  <img src="images/8_page_1.png" alt="Form Example 2">
+                  <figcaption class="has-text-centered">
+                    Figure 2: Another form example showing different input field layouts
                   </figcaption>
                 </figure>
               </div>
