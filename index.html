@@ -126,8 +126,22 @@
 
 <section class="section">
   <div class="container is-max-desktop">
+    <!-- Overview Figure -->
+    <div class="columns is-centered">
+      <div class="column is-full">
+        <div class="content has-text-justified">
+          <figure class="image" style="margin: 2rem auto;">
+            <img src="images/fig1v1_page_1.png" alt="FormFactory Overview" style="max-width: 95%; margin: 0 auto;">
+            <figcaption class="has-text-centered" style="margin-top: 1rem; color: #4a4a4a; font-size: 0.95em;">
+              Figure 1: Overview of the form-filling task and its challenges. Compared to general GUI tasks, form-filling involves more diverse applications and demands higher semantic understanding, layout flexibility, and interaction complexity.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
     <!-- Abstract. -->
-    <div class="columns is-centered has-text-centered">
+    <div class="columns is-centered has-text-centered" style="margin-top: 4rem;">
       <div class="column is-four-fifths">
         <h2 class="title is-3">Abstract</h2>
         <div class="content has-text-justified">
@@ -146,36 +160,49 @@ We hope our benchmark can serve as a stepping stone for further research into ro
     </div>
     <!--/ Abstract. -->
 
-    <!-- Overview -->
-    <div class="columns is-centered has-text-centered">
+    <!-- Benchmark Construction -->
+    <div class="columns is-centered has-text-centered" style="margin-top: 4rem;">
       <div class="column is-full">
-        <h2 class="title is-3">Overview</h2>
-        <div class="content has-text-justified">
+        <h2 class="title is-3">Benchmark Construction</h2>
+        <div class="content has-text-justified" style="max-width: 95%; margin: 0 auto 1rem auto;">
           <p>
-            FormFactory provides a comprehensive benchmarking suite for evaluating form-filling agents across diverse scenarios. 
-            Our framework integrates various form types and field formats while maintaining high-fidelity interaction simulation.
-            The figure below illustrates the key components and workflow of our system.
+            We developed a high-fidelity browser-based interaction platform using Python and Flask to evaluate the performance of form-filling agents. This interactive platform enables users to complete various form-filling tasks directly within a web interface, while the backend system performs real-time evaluation by automatically comparing submitted values against gold-standard field annotations. The platform comprises 20 web forms spanning eight real-world domains, including academia, finance, healthcare, and information technology. It supports a diverse range of input types, such as text fields, dropdown menus, date pickers, checkboxes, file uploads, and numerical inputs.
+        </div>
+        <div class="content has-text-justified" style="max-width: 95%; margin: 0 auto 1rem auto;">
+          <p>
+            To simulate the complexity of real-world deployment environments, the platform incorporates a wide variety of page layouts, font styles, and color schemes. It also supports multi-page forms and modular field definitions, allowing for flexible configuration of diverse evaluation scenarios. This platform provides a realistic and compositional UI environment for large-scale, reproducible evaluation of both human annotators and multimodal models.
           </p>
-          <figure class="image" style="margin: 2rem auto;">
-            <img src="images/fig1v1_page_1.png" alt="FormFactory Overview" style="max-width: 95%; margin: 0 auto;">
-            <figcaption class="has-text-centered" style="margin-top: 1rem; color: #4a4a4a; font-size: 0.95em;">
-              Figure 1: Overview of the FormFactory framework, showing the interaction between different components and the evaluation process.
-            </figcaption>
-          </figure>
+        </div>
+    <!-- Video -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <div class="content has-text-centered">
+          <video id="demo-video" controls autoplay loop muted playsinline style="width: 100%; max-width: 800px; margin: 0 auto;">
+            <source src="video.mov" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+          <p class="caption" style="margin-top: 1rem; color: #4a4a4a; font-size: 0.95em;">
+            Demo video showing the interactive form-filling process and evaluation platform in action.
+          </p>
         </div>
       </div>
     </div>
-
-    <!-- Dataset Table -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full">
-        <h2 class="title is-3">Dataset Statistics</h2>
+        <div class="content has-text-justified" style="max-width: 95%; margin: 0 auto 1rem auto;">
+          <p>
+            Additionally, we constructed a dataset of 1,250 form-filling instances using a generative approach. Each instance consists of an input document or descriptive text paired with structured field-value annotations. The inputs include real or LLM-generated resumes, academic papers, leave requests, registration forms, and other free-form text formats. We first sample gold-standard field values from the form templates, and then prompt a large language model to generate natural language inputs that implicitly contain these values, thereby simulating realistic user behavior. For example, in job application scenarios, we generate detailed Markdown-formatted resumes, while in academic contexts, metadata is extracted from real research papers.
+          </p>
+        </div>
+        <div class="content has-text-justified" style="max-width: 95%; margin: 0 auto 1rem auto;">
+          <p>
+            The final dataset comprises 13,800 field-value pairs, encompassing a wide variety of field types and input modalities. It presents significant challenges for models in terms of language understanding and layout reasoning. Detailed statistics of the dataset are provided in Table 1.
+          </p>
+        </div>
         <div class="content" style="overflow-x: auto;">
           <style>
             .stats-table {
               width: 100%;
               border-collapse: collapse;
-              margin: 20px 0;
+              margin: 0 0 20px 0;
               font-size: 0.9em;
               box-shadow: 0 2px 15px rgba(0,0,0,0.05);
               border-radius: 8px;
@@ -483,10 +510,12 @@ We hope our benchmark can serve as a stepping stone for further research into ro
       </p>
     </div>
 
+
+
     <!-- 分隔部分 -->
 
-    <!-- 模型评估结果部分 -->
-    <section class="section" style="padding-top: 0;">
+    <!-- Model Performance Evaluation -->
+    <section class="section" style="padding-top: 4rem;">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
           <div class="column is-full">
@@ -773,31 +802,6 @@ We hope our benchmark can serve as a stepping stone for further research into ro
       </div>
     </div>
 
-    <!-- Concurrent Work. -->
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-
-        <div class="content has-text-justified">
-          <p>
-            There's a lot of excellent work that was introduced around the same time as ours.
-          </p>
-          <p>
-            <a href="https://arxiv.org/abs/2104.09125">Progressive Encoding for Neural Optimization</a> introduces an idea similar to our windowed position encoding for coarse-to-fine optimization.
-          </p>
-          <p>
-            <a href="https://www.albertpumarola.com/research/D-NeRF/index.html">D-NeRF</a> and <a href="https://gvv.mpi-inf.mpg.de/projects/nonrigid_nerf/">NR-NeRF</a>
-            both use deformation fields to model non-rigid scenes.
-          </p>
-          <p>
-            Some works model videos with a NeRF by directly modulating the density, such as <a href="https://video-nerf.github.io/">Video-NeRF</a>, <a href="https://www.cs.cornell.edu/~zl548/NSFF/">NSFF</a>, and <a href="https://neural-3d-video.github.io/">DyNeRF</a>
-          </p>
-          <p>
-            There are probably many more by the time you are reading this. Check out <a href="https://dellaert.github.io/NeRF/">Frank Dellart's survey on recent NeRF papers</a>, and <a href="https://github.com/yenchenlin/awesome-NeRF">Yen-Chen Lin's curated list of NeRF papers</a>.
-          </p>
-        </div>
-      </div>
-    </div>
     <!--/ Concurrent Work. -->
 
   </div>
@@ -821,30 +825,12 @@ We hope our benchmark can serve as a stepping stone for further research into ro
 
 
 <footer class="footer">
-  <div class="container">
-    <div class="content has-text-centered">
-      <a class="icon-link"
-         href="./static/videos/nerfies_paper.pdf">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="https://github.com/keunhong" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
-    </div>
     <div class="columns is-centered">
       <div class="column is-8">
-        <div class="content">
+        <div class="content has-text-centered">
           <p>
-            This website is licensed under a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            This means you are free to borrow the <a
-              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
-            we just ask that you link back to this page in the footer.
-            Please remember to remove the analytics code included in the header of the website which
-            you do not want on your website.
+            The webpage is built based on <a
+              href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>.
           </p>
         </div>
       </div>
