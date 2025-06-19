@@ -68,63 +68,69 @@
             <span class="author-block"><sup>4</sup>Nanjing University</span>
           </div>
 
-          <div class="content has-text-centered">
-            <p style="font-size: 0.85em; color: #4a4a4a;">
+          <div class="content has-text-centered" style="margin-bottom: 0.5em;">
+            <p style="font-size: 0.85em; color: #4a4a4a; margin-bottom: 0.25em;">
               <sup>#</sup> indicates equal contribution.
             </p>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-              <!-- PDF Link. -->
+          
+            <div class="publication-links" style="margin-top: 0.3em;">
+              <!-- PDF Link -->
               <span class="link-block">
                 <a href="https://arxiv.org/pdf/2506.01520"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
+                    <i class="fas fa-file-pdf"></i>
                   </span>
                   <span>Paper</span>
                 </a>
               </span>
+          
+              <!-- arXiv Link -->
               <span class="link-block">
                 <a href="https://arxiv.org/abs/2506.01520"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="ai ai-arxiv"></i>
+                    <i class="ai ai-arxiv"></i>
                   </span>
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
+          
+              <!-- Video Link -->
               <span class="link-block">
                 <a href="#demo-video"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fab fa-youtube"></i>
+                    <i class="fab fa-youtube"></i>
                   </span>
                   <span>Video</span>
                 </a>
               </span>
-              <!-- Code Link. -->
+          
+              <!-- Code Link -->
               <span class="link-block">
                 <a href="https://github.com/formfactory-ai/formfactory"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fab fa-github"></i>
+                    <i class="fab fa-github"></i>
                   </span>
                   <span>Code</span>
-                  </a>
+                </a>
               </span>
-              <!-- Dataset Link. -->
+          
+              <!-- Data Link -->
               <span class="link-block">
                 <a href="https://github.com/formfactory-ai/formfactory"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="far fa-images"></i>
+                    <i class="far fa-images"></i>
                   </span>
                   <span>Data</span>
-                  </a>
+                </a>
+              </span>
             </div>
+          </div>
+          
 
 
 
@@ -750,6 +756,12 @@ We hope our benchmark can serve as a stepping stone for further research into ro
         <div class="columns is-centered">
           <div class="column is-full">
             <div class="content has-text-justified">
+              <p style="margin-bottom: 2rem;">
+                To better understand model performance beyond value prediction, we also analyze click accuracy on forms with varying numbers of fields. Click accuracy declines as the number of fields increases—a trend largely driven by higher visual complexity and denser layouts. Unlike value prediction, which applies across all field types, we report click accuracy only for String and Description fields, since model performance on other types like checkboxes and dropdowns remains consistently close to zero. Even with this filtering, click accuracy across all models remains low, highlighting the difficulty of precise pixel-level interaction and spatial grounding, even for simple text inputs.
+              </p>
+              <p style="margin-bottom: 2rem;">
+                We further explore how field count and field type interact, as they often co-occur in real-world scenarios and jointly contribute to task difficulty. To capture this, we conduct a 3D analysis that examines model performance across both variables. Models perform best when both field count and type complexity are low, and worst when both are high—suggesting a strong compounding effect. This pattern supports the design of our benchmark, which intentionally includes forms with both numerous and diverse fields to stress-test spatial reasoning, alignment, and grounding capabilities in current MLLMs.
+              </p>
               <style>
                 .form-image-container .column {
                   padding: 0.5rem;  /* 减小列间距 */
@@ -774,7 +786,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                     <figure class="image">
                       <img src="images/3_page_1.png" alt="Form Example 3">
                       <figcaption class="has-text-centered">
-                        Figure 3: Form with specialized input requirements
+                        Figure 3: Value accuracy across varying field counts (smoothed with a window size of 3)
                       </figcaption>
                     </figure>
                   </div>
@@ -782,7 +794,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                     <figure class="image">
                       <img src="images/4_page_1.png" alt="Form Example 4">
                       <figcaption class="has-text-centered">
-                        Figure 4: Form demonstrating various field validations
+                        Figure 4: Value accuracy across varying field types
                       </figcaption>
                     </figure>
                   </div>
@@ -793,7 +805,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                     <figure class="image">
                       <img src="images/5_page_1.png" alt="Form Example 5">
                       <figcaption class="has-text-centered">
-                        Figure 5: Complex form with nested sections
+                        Figure 5: Click accuracy across varying field counts (smoothed with a window size of 3)
                       </figcaption>
                     </figure>
                   </div>
@@ -801,7 +813,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                     <figure class="image">
                       <img src="images/6_page_1.png" alt="Form Example 6">
                       <figcaption class="has-text-centered">
-                        Figure 6: Form with advanced interaction elements
+                        Figure 6: Click accuracy across varying field types
                       </figcaption>
                     </figure>
                   </div>
@@ -811,7 +823,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                     <figure class="image">
                       <img src="images/7_page_1.png" alt="Form Example 1">
                       <figcaption class="has-text-centered">
-                        Figure 1: Example of a complex form with multiple field types
+                        Figure 7: : Click accuracy under joint variation of field count and field types for Claude 3.7 Sonnet
                       </figcaption>
                     </figure>
                   </div>
@@ -819,7 +831,7 @@ We hope our benchmark can serve as a stepping stone for further research into ro
                     <figure class="image">
                       <img src="images/8_page_1.png" alt="Form Example 2">
                       <figcaption class="has-text-centered">
-                        Figure 2: Another form example showing different input field layouts
+                        Figure 8: Click accuracy under joint variation of field count and field types for Qwen-VL-Max
                       </figcaption>
                     </figure>
                   </div>
